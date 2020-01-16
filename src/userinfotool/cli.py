@@ -3,7 +3,7 @@ import argparse
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path', help='The path to the export file')
-    parser.add_argument('--format', default=json,choices=[json,csv], type=str.lower(), help='Choose which format should be the output in')
+    parser.add_argument('--format', default='json',choices=['json','csv'], type=str.lower, help='Choose which format should be the output in')
     return parser
 
 def main():
@@ -11,7 +11,7 @@ def main():
     from userinfotool import export
     from userinfotool import users as u
 
-    args = creeate_parser().parse_args()
+    args = create_parser().parse_args()
     users = u.fetch_users()
 
     if args.path:
@@ -21,5 +21,6 @@ def main():
 
     if args.format == 'json':
         export.to_json_file(file, users)
+    else:
         export.to_csv_file(file, users)
 
