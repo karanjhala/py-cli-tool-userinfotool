@@ -12,6 +12,9 @@ setup(
         author_email='karanjhala@gmail.com',
         packages=find_packages('src'),
         package_dir={'':'src'},
-        install_requires=[]
+        install_requires=[],
+        entry_points={
+            'console_scripts' : 'userinfotool=userinfotool.cli:main',
+        }
 )
 
